@@ -10,7 +10,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
 ));
 
 $app->get('/', function() use($app) {
-    return getResponse('application up and running');
+    return getResponse('application up and running :)');
 });
 
 $app->post('/1SYu4H4BG2SA0CL5i9Gm', function() use($app) {

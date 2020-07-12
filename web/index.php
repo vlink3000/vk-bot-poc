@@ -33,7 +33,7 @@ $app->post('/1SYu4H4BG2SA0CL5i9Gm', function() use($app) {
             'v' => '5.69'
         ];
 
-        file_get_contents('http://api.vk.com/method/messages.send?' . http_build_query($requestParams));
+        file_get_contents('https://api.vk.com/method/messages.send?' . http_build_query($requestParams));
 
         return getResponse('request has been processed');
     }

@@ -25,12 +25,17 @@ $app->post('/1SYu4H4BG2SA0CL5i9Gm', function() use($app) {
         return getResponse('invalid secret and request type');
     }
 
-    switch ($request->type) {
-        case 'confirmation':
-            return '1c96ca0e';
-            break;
-        case 'message_new':
-            break;
+    if ($request->type == 'message_new') {
+        $requestParams = [
+            'user_id' => $request->object->user_id,
+            'message' => 'ok',
+            'access_token' => getenv('VK_TOKEN'),
+            'v' => '5.69'
+        ];
+
+        file_get_contents('http://api.vk.com/method/messages.send?' . http_build_query($requestParams));
+
+        return getResponse('request has been processed');
     }
 
     return getResponse('unknown request');
@@ -38,6 +43,11 @@ $app->post('/1SYu4H4BG2SA0CL5i9Gm', function() use($app) {
 
 $app->run();
 
+/**
+ * @param string $message
+ *
+ * @return string
+ */
 function getResponse(string $message): string
 {
     return json_encode(array('message' => $message));

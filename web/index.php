@@ -28,7 +28,7 @@ $app->post('/1SYu4H4BG2SA0CL5i9Gm', function() use($app) {
     if ($request->type == 'message_new') {
         $requestParams = [
             'user_id' => $request->object->user_id,
-            'message' => 'ok',
+            'message' => $request->object->body,
             'access_token' => getenv('VK_TOKEN'),
             'v' => '5.69'
         ];

@@ -35,7 +35,7 @@ $app->post('/1SYu4H4BG2SA0CL5i9Gm', function() use($app) {
 
         file_get_contents('https://api.vk.com/method/messages.send?' . http_build_query($requestParams));
 
-        return ok;
+        return 'ok';
     }
 
     return getResponse('unknown request');
